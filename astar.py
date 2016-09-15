@@ -1,12 +1,10 @@
-import main
-from main import *
-
-class Grid:
-	def init(self, x, y, SearchSpace):
+class ADGP_120:
+	def init(self, SearchSpace):
 		for x in Grid(10):
 			for y in Grid(10):
 				OPEN = []
 				CLOSED = []
+				parent = None
 				start = (1,1)
 				goal = (5,7)
 				unwalkable = ((1,1),(0,2),(2,3),(3,1),(4,2),(2,9),(6,2),(4,5),(8,3),(5,5),(3,3),(3,4),(9,6),(7,8),(8,8),(2,7))
@@ -17,34 +15,24 @@ class Grid:
 				else:
 					unwalkable = False
 					OPEN.append(walkable)
-				node = self.walkable, self.unwalkable
-				
-class Pit:
-	def init(self, x, y, Grid):
-		hole = self.unwalkable
-	
-class Wampus:
-	def init(self, x, y, Grid):
-		finish = self.goal
+				node = self.walkable
+				parent = start
 
-class Player:
-	def init(self, x, y, Grid):
-		pos = self.start
-	
-class ADGP_120:
 	def node(self):
 		self.width = 20
 		self.height = 20
 		self.margin = 5
 		self.left = (self.margin + self.width) * x + self.margin
 		self.top = (self.margin + self.height) * y + self.margin
-		self.pos = (x, self.height - y)
+		self.start = (x, self.height - y)
 		self.center = (self.left + (self.width/2)), (self.top + (self.height/2))
 
-	def current(self):
-		
-
-	def neighbor(self, Grid, Player):
+	def Current(self):
+		parent = False
+		current = self.parent
+			
+	def neighbors(self, Grid):
+		neighbor = node
 		west = current.node - 1
 		east = current.node + 1
 		north = current.node - width
@@ -53,37 +41,67 @@ class ADGP_120:
 		northeast = current.node - width + 1
 		southwest = current.node + width - 1
 		southeast = current.node + width + 1
-		around = [] and x - 1 from current
-		neighors = self.walkable and around[pos]
-		CLOSED.append(pos)
-		OPEN.append(neighbors)
+		
+		if (neighbor == self.walkable):
+			OPEN.append(neighbor)
+		else:
+			CLOSED.append(neighbor)
+			
+	def Find(self):
+		find = []
+		if (current == start and neighbor == walkable):
+			find = neighbor
+			
+	def Closer(self):
+		closer = False
+		if (self.goal - self.neighbor < self.goal - self.current):
+			closer = True
+			
+	def Move(self):
+		move = False
+		if (self.neighbor <= current and self.walkable and self.closer == true):
+			self.move = True
+			self.current = self.neighbor
+			self.parent = self.current
 	
-	def path(self, Grid, Pit, Player, Wampus):
+	def path(self):
 		path = []
-		self.path = path + [pos]
-		current = self.pos
-		if(pos == finish):
+		self.path = path + [start]
+		current = self.start
+		if(current == start and closer == True):
+			find[neighbor]
+		if(current == neighbor and closer == True):
+			find[neighbor or goal]
+		if(current == goal):
 			return[path]
-		else
+		else:
 			print(nope)
 		Shortest = None
-		for node in grid[pos]:
+		for node in grid[start]:
 			if(node not in path):
-				newpath = find_path(grid, node, finish, path)
+				newpath = find_path(grid, node, goal, path)
 				if (newpath):
 					if(not shortest or len(newpath) < len(shortest)):
 						newpath = shortest
 		return newpath
 		
 	def print_path(self): 
-		node = self.finish
-		while node.parent is not self.pos:
+		node = self.goal
+		while node.parent is not self.start:
 			node = node.parent
 			print 'path: node: %d,%d' % (node.x, node.y)
-		
 
-	def run(self, screen):
+	def run(self):
 		open = self.OPEN
 		closed = self.CLOSED
+		done = False
+		self.start = self.current
+		closed.append(current)
+		if(move == True):
+			self.current = self.neighbor
+		if(self.current == self.goal):
+			done = True
+		print path()
 		
-		
+	def main(self):
+		run()	
