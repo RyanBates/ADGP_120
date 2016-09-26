@@ -95,7 +95,4 @@ class ADGP_120:
 			self.current = self.neighbor
 		if(self.current == self.goal):
 			done = True
-		print path[]
-		
-	def main(self):
-		run()	
+		print path[start, goal]
