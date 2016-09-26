@@ -7,7 +7,8 @@ class ADGP_120:
 				parent = None
 				start = (1,1)
 				goal = (5,7)
-				unwalkable = ((1,1),(0,2),(2,3),(3,1),(4,2),(2,9),(6,2),(4,5),(8,3),(5,5),(3,3),(3,4),(9,6),(7,8),(8,8),(2,7))
+				unwalkable = ((1,1),(0,2),(2,3),(3,1),(4,2),(2,9),(6,2),
+				(4,5),(8,3),(5,5),(3,3),(3,4),(9,6),(7,8),(8,8),(2,7))
 				walkable != self.unwalkable
 				if (x, y) in unwalkable:
 					unwalkable = True
@@ -15,8 +16,8 @@ class ADGP_120:
 				else:
 					unwalkable = False
 					OPEN.append(walkable)
-				node = self.walkable
 				parent = start
+				
 
 	def node(self):
 		self.width = 20
@@ -29,9 +30,13 @@ class ADGP_120:
 
 	def Current(self):
 		parent = False
+		self.start = current 
 		current = self.parent
+		CLOSED.append(current)
 			
-	def neighbors(self, Grid):
+	def neighbors(self):
+		if neighbor == (x,y) in walkable:
+			node = walkable
 		neighbor = node
 		west = current.node - 1
 		east = current.node + 1
@@ -42,36 +47,30 @@ class ADGP_120:
 		southwest = current.node + width - 1
 		southeast = current.node + width + 1
 		
-		if (neighbor == self.walkable):
-			OPEN.append(neighbor)
-		else:
-			CLOSED.append(neighbor)
 			
 	def Find(self):
 		find = []
 		if (current == start and neighbor == walkable):
-			find = neighbor
+			find[neighbor]
 			
 	def Closer(self):
 		closer = False
-		if (self.goal - self.neighbor < self.goal - self.current):
+		if (self.goal - self.neighbor <= self.goal - self.current):
 			closer = True
 			
 	def Move(self):
 		move = False
-		if (self.neighbor <= current and self.walkable and self.closer == true):
+		if (self.neighbor <= current and self.walkable and self.closer == True):
 			self.move = True
 			self.current = self.neighbor
-			self.parent = self.current
 	
 	def path(self):
-		path = []
+		path = [Grid]
 		self.path = path + [start]
 		current = self.start
-		if(current == start and closer == True):
-			find[neighbor]
-		if(current == neighbor and closer == True):
-			find[neighbor or goal]
+		if(current == start and neighbor.walkable == True and closer == True 
+		or current == neighbor.walkable == True and closer == True):
+			current = neighbor
 		if(current == goal):
 			return[path]
 		else:
@@ -84,14 +83,9 @@ class ADGP_120:
 					if(not shortest or len(newpath) < len(shortest)):
 						newpath = shortest
 		return newpath
-		
-	def print_path(self): 
-		node = self.goal
-		while node.parent is not self.start:
-			node = node.parent
-			print 'path: node: %d,%d' % (node.x, node.y)
 
 	def run(self):
+		print Grid
 		open = self.OPEN
 		closed = self.CLOSED
 		done = False
@@ -101,7 +95,7 @@ class ADGP_120:
 			self.current = self.neighbor
 		if(self.current == self.goal):
 			done = True
-		print path()
+		print path[]
 		
 	def main(self):
 		run()	
